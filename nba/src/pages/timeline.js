@@ -1,3 +1,11 @@
-export default function Time() {
-    return <h1>Time</h1>
-}
+import React from 'react';
+
+const Timeline = () => {
+  return (
+    <div>
+      <h1>Timeline Page</h1>
+    </div>
+  );
+};
+
+export default Timeline;

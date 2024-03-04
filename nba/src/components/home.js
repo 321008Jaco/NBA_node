@@ -1,13 +1,33 @@
 import './home.css';
+import React from 'react';
 
-function Home() {
-    return (
-
-      <div className="home">
-        <h1>Welcome To The Only NBA Stats Site You'll Ever Need!</h1>
+const Home = () => {
+  return (
+    <div>
+      <h1>Home Page</h1>
+      <div className="container">
+        <div className="top-columns">
+          <div className="main-column">
+            <div className="content">
+              {/* Your main content goes here */}
+            </div>
+          </div>
+          <div className="side-column">
+            <div className="content">
+              {/* Your side content goes here */}
+            </div>
+          </div>
+        </div>
       </div>
-      
-    );
-  }
-  
-  export default Home;
+      <div className="container">
+        <div className="third-column">
+          <div className="content">
+            {/* Your third column content goes here */}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
