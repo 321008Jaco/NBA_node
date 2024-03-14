@@ -1,5 +1,6 @@
 import './home.css';
 import React from 'react';
+import HomeChart from './barchart';
 
 const Home = () => {
   return (
@@ -9,12 +10,12 @@ const Home = () => {
         <div className="top-columns">
           <div className="main-column">
             <div className="content">
-              {/* Your main content goes here */}
+              {/* content here */}
             </div>
           </div>
           <div className="side-column">
             <div className="content">
-              {/* Your side content goes here */}
+            {/* content here */}
             </div>
           </div>
         </div>
@@ -22,7 +23,7 @@ const Home = () => {
       <div className="container">
         <div className="third-column">
           <div className="content">
-            {/* Your third column content goes here */}
+          <HomeChart />
           </div>
         </div>
       </div>
