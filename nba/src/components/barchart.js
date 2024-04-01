@@ -1,6 +1,8 @@
 import React from "react";
 import Chart from "chart.js/auto";
 import {Bar} from 'react-chartjs-2'
+import axios from "axios";
+import FetchRandomBoss from "./apiCall";
 
 const HomeChart = () => {
     return (

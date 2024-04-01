@@ -1,7 +1,7 @@
 import './home.css';
 import React from 'react';
 import HomeChart from './barchart';
-import FetchData from './apiCall';
+import FetchRandomBoss from './apiCall';
 
 const Home = () => {
   return (
@@ -16,7 +16,7 @@ const Home = () => {
           </div>
           <div className="side-column">
             <div className="content">
-            {/* content here */}
+            <FetchRandomBoss />
             </div>
           </div>
         </div>
@@ -28,8 +28,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      <FetchData /> 
 
     </div>
 
