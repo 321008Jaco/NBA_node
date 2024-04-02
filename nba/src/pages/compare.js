@@ -1,46 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import DropdownOne from '../components/Dropdown1';
-import FetchWeaponById from './FetchWeaponById';
+import WeaponDisplay from './FetchWeaponById';
+import WeaponDropdown from '../components/Dropdown2';
+import Weapon from '../components/weaponsAPI';
 import DropdownTwo from '../components/Dropdown2';
 import axios from 'axios';
+import './compare.css';
 
 const Compare = () => {
-  const [weapons, setWeapons] = useState([]);
-  const [selectedWeaponId, setSelectedWeaponId] = useState(null);
+  const [selectedOption, setSelectedOption] = useState('');
 
-  useEffect(() => {
-    const fetchWeapons = async () => {
-      try {
-        const response = await axios.get('/api/weapons');
-        setWeapons(response.data);
-      } catch (error) {
-        console.error('Error fetching weapons:', error);
-      }
-    };
-
-    fetchWeapons();
-  }, []);
-
-  const handleWeaponSelect = (weaponId) => {
-    setSelectedWeaponId(weaponId);
+  const handleDropdownChange = (option) => {
+    setSelectedOption(option);
   };
 
   return (
     <div className="compare-container">
-      <DropdownOne />
-      <div className="compare-column">
-        {weapons && weapons.length > 0 && (
-          <DropdownTwo weapons={weapons} onSelectWeapon={handleWeaponSelect} />
-        )}
+      <div className="big-column left-column">
+        Primary
+        <DropdownOne onSelectOption={handleDropdownChange} />
+        <DropdownTwo selectedOption={selectedOption} />
+        {/* <WeaponDisplay weapon={selectedWeapon} /> */}
       </div>
-      <div className="compare-column">
-        <FetchWeaponById weaponId={selectedWeaponId} />
+      <div className="small-column">
+        {/* Content Here */}
+        Compare
       </div>
-      <div className="compare-column">
-        {/* Other content for the third column */}
+      <div className="big-column right-column">
+        {/* Content Here */}
+        Secondary
+        <DropdownOne onSelectOption={handleDropdownChange} />
       </div>
     </div>
   );
 };
 
 export default Compare;
+
+
