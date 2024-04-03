@@ -3,7 +3,7 @@ import axios from 'axios';
 
 async function getRandomWeapon() {
   try {
-    const response = await axios.get('https://eldenring.fanapis.com/api/weapons');
+    const response = await axios.get('https://eldenring.fanapis.com/api/weapons/');
     const weaponData = response.data.data[0];
     return weaponData;
   } catch (error) {
@@ -71,4 +71,27 @@ function Weapon() {
   );
 }
 
-export default Weapon;
+
+async function getWeaponById(weaponId) {
+  try {
+    const response = await axios.get(`https://eldenring.fanapis.com/api/weapons/${weaponId}`);
+    const weaponData = response.data.data[0];
+    return {
+      id: weaponData.id,
+      name: weaponData.name,
+      image: weaponData.image,
+      description: weaponData.description,
+      category: weaponData.category,
+      weight: weaponData.weight,
+      attack: weaponData.attack,
+      defence: weaponData.defence,
+      requiredAttributes: weaponData.requiredAttributes,
+      scalesWith: weaponData.scalesWith
+    };
+  } catch (error) {
+    console.error('Error fetching weapon data by ID:', error);
+    return null;
+  }
+}
+
+export default getWeaponById;

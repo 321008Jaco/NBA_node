@@ -8,19 +8,18 @@ import axios from 'axios';
 import './compare.css';
 
 const Compare = () => {
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedWeaponId, setSelectedWeaponId] = useState('');
 
-  const handleDropdownChange = (option) => {
-    setSelectedOption(option);
+  const handleSelectWeapon = (weaponId) => {
+    setSelectedWeaponId(weaponId);
   };
 
   return (
     <div className="compare-container">
       <div className="big-column left-column">
         Primary
-        <DropdownOne onSelectOption={handleDropdownChange} />
-        <DropdownTwo selectedOption={selectedOption} />
-        {/* <WeaponDisplay weapon={selectedWeapon} /> */}
+        <DropdownOne onSelectWeapon={handleSelectWeapon} />
+        {/* DropdownTwo should only be rendered once */}
       </div>
       <div className="small-column">
         {/* Content Here */}
@@ -29,12 +28,12 @@ const Compare = () => {
       <div className="big-column right-column">
         {/* Content Here */}
         Secondary
-        <DropdownOne onSelectOption={handleDropdownChange} />
+        {/* Another instance of DropdownOne */}
+        <DropdownTwo selectedWeaponId={selectedWeaponId} />
       </div>
     </div>
   );
 };
 
 export default Compare;
-
 

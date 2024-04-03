@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-const Dropdown1 = () => {
+const DropdownOne = ({ onSelectWeapon }) => {
   const [selectedValue, setSelectedValue] = useState('');
-  const [weaponNames, setWeaponNames] = useState([]);
+  const [weaponData, setWeaponData] = useState([]);
   const [creatureNames, setCreatureNames] = useState([]);
 
   const handleSelectChange = (event) => {
@@ -14,7 +14,7 @@ const Dropdown1 = () => {
       fetch('https://eldenring.fanapis.com/api/weapons')
         .then((response) => response.json())
         .then((data) => {
-          setWeaponNames(data.data.map((weapon) => weapon.name));
+          setWeaponData(data.data.map((weapon) => ({ id: weapon.id, name: weapon.name })));
         })
         .catch((error) => console.log(error));
     } else if (selectedValue === 'Creatures') {
@@ -25,14 +25,20 @@ const Dropdown1 = () => {
         })
         .catch((error) => console.log(error));
     } else if (selectedValue === 'Bosses') {
-        fetch('https://eldenring.fanapis.com/api/bosses')
-          .then((response) => response.json())
-          .then((data) => {
-            setCreatureNames(data.data.map((creature) => creature.name));
-          })
-          .catch((error) => console.log(error));
-      }
+      fetch('https://eldenring.fanapis.com/api/bosses')
+        .then((response) => response.json())
+        .then((data) => {
+          setCreatureNames(data.data.map((creature) => creature.name));
+        })
+        .catch((error) => console.log(error));
+    }
   }, [selectedValue]);
+
+  const handleWeaponSelect = (event) => {
+    const selectedWeaponId = event.target.value;
+    const selectedWeapon = weaponData.find(weapon => weapon.id === selectedWeaponId);
+    onSelectWeapon(selectedWeapon);
+  };
 
   return (
     <div>
@@ -44,11 +50,11 @@ const Dropdown1 = () => {
       </select>
 
       {selectedValue === 'Weapons' && (
-        <select>
+        <select onChange={handleWeaponSelect}>
           <option value="">Select a weapon</option>
-          {weaponNames.map((name, index) => (
-            <option key={index} value={name}>
-              {name}
+          {weaponData.map((weapon) => (
+            <option key={weapon.id} value={weapon.id}>
+              {weapon.name}
             </option>
           ))}
         </select>
@@ -65,7 +71,7 @@ const Dropdown1 = () => {
         </select>
       )}
 
-{selectedValue === 'Bosses' && (
+      {selectedValue === 'Bosses' && (
         <select>
           <option value="">Select a Boss</option>
           {creatureNames.map((name, index) => (
@@ -79,6 +85,8 @@ const Dropdown1 = () => {
   );
 };
 
-export default Dropdown1;
+export default DropdownOne;
+
+
 
 
