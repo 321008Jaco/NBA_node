@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const FetchRandomBoss = () => {
+const FetchRandomBoss = ({ reset }) => {
   const [boss, setBoss] = useState(null);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const FetchRandomBoss = () => {
     };
 
     fetchRandomBoss();
-  }, []);
+  }, [reset]); // Trigger fetch when reset prop changes
 
   return (
     <div className="boss-container">

@@ -1,9 +1,16 @@
 import './home.css';
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import HomeChart from './barchart';
 import FetchRandomBoss from './apiCall';
+import axios from 'axios';
 
 const Home = () => {
+  const [resetFetch, setResetFetch] = useState(false);
+
+  const fetchRandomBoss = () => {
+    setResetFetch(!resetFetch); // Toggle the resetFetch state to trigger a re-fetch
+  };
+
   return (
     <div>
       <h1>Home Page</h1>
@@ -16,7 +23,8 @@ const Home = () => {
           </div>
           <div className="side-column">
             <div className="content">
-            <FetchRandomBoss />
+              <FetchRandomBoss reset={resetFetch} />
+              <button onClick={fetchRandomBoss}>Fetch Random Boss</button> {/* Button to fetch a random boss */}
             </div>
           </div>
         </div>
@@ -24,14 +32,11 @@ const Home = () => {
       <div className="container">
         <div className="third-column">
           <div className="content">
-          <HomeChart />
+            <HomeChart />
           </div>
         </div>
       </div>
-
     </div>
-
-    
   );
 };
 
