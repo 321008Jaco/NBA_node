@@ -1,0 +1,36 @@
+.timeline-graph-container {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .timeline-main-column {
+    width: 70%;
+    padding: 10px;
+    border-radius: 50px;
+    background-color: #1a1c1f;
+    margin: 10px;
+    margin-left: 50px;
+  }
+  
+  .timeline-side-column {
+    width: 30%;
+    padding: 10px;
+    border-radius: 50px;
+    background-color: #1a1c1f;
+    margin: 10px;
+  }
+  
+  .timeline-container {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .timeline-third-column {
+    width: 100%;
+    padding: 10px;
+    border-radius: 50px;
+    background-color: #1a1c1f;
+    margin: 10px;
+    margin-left: 50px;
+  }
+

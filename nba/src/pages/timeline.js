@@ -1,17 +1,32 @@
 import React, { useEffect, useState } from "react";
 import PieChart from '../components/piechart';
 import Dropdown from "../components/Dropdown";
+import './timeline.css';
 import axios from "axios";
 
 const Timeline = () => {
-  const [weapons, setWeapons] = useState([]);
-  const [selectedWeapon, setSelectedWeapon] = useState('');
+  const [weaponsByCategory, setWeaponsByCategory] = useState([]);
 
   useEffect(() => {
     const fetchWeapons = async () => {
       try {
         const response = await axios.get('https://eldenring.fanapis.com/api/weapons');
-        setWeapons(response.data.data);
+        const weaponsData = response.data.data;
+        const categoryCounts = {};
+        
+        // Count weapons in each category
+        weaponsData.forEach((weapon) => {
+          const category = weapon.category;
+          categoryCounts[category] = (categoryCounts[category] || 0) + 1;
+        });
+
+        // Convert category counts to array for PieChart data
+        const weaponsByCategoryArray = Object.entries(categoryCounts).map(([category, count]) => ({
+          category,
+          count,
+        }));
+
+        setWeaponsByCategory(weaponsByCategoryArray);
       } catch (error) {
         console.error('Error fetching weapons:', error);
       }
@@ -20,36 +35,27 @@ const Timeline = () => {
     fetchWeapons();
   }, []);
 
-  const handleSelectWeapon = (event) => {
-    setSelectedWeapon(event.target.value);
-  };
-
   return (
     <div>
-      <h1>Timeline Page</h1>
-      <div className="graph-container">
-        <div className="top-columns">
-          <div className="main-column">
-            <div className="content">
-              {/* content here */}
-            </div>
+      <h1 style={{textAlign: 'center'}}>Timeline Page</h1>
+      <div className="timeline-graph-container">
+        <div className="timeline-main-column">
+          <div className="content">
+            {/* Content of the main column */}
           </div>
-          <div className="side-column">
-            <div className="content">
-            <select>
-              {weapons.map((weapon) => (
-                <option key={weapon.id} value={weapon.id}>{weapon.name}</option>
-              ))}
-            </select>
+        </div>
+        <div className="timeline-side-column">
+          <div className="content">
+            <div style={{ width: '100%', height: 'auto' }}>
+              <PieChart data={weaponsByCategory} />
             </div>
           </div>
         </div>
       </div>
-      <div className="container">
-        <div className="third-column">
+      <div className="timeline-container">
+        <div className="timeline-third-column">
           <div className="content">
-
-            {selectedWeapon && <PieChart weaponId={selectedWeapon} />}
+            {/* Content of the third column */}
           </div>
         </div>
       </div>

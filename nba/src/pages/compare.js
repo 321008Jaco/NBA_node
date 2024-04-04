@@ -6,6 +6,8 @@ const Compare = () => {
   const [weapons, setWeapons] = useState([]);
   const [selectedWeaponLeft, setSelectedWeaponLeft] = useState(null);
   const [selectedWeaponRight, setSelectedWeaponRight] = useState(null);
+  const [attackDifference, setAttackDifference] = useState({});
+  const [defenseDifference, setDefenseDifference] = useState({});
 
   useEffect(() => {
     axios.get('https://eldenring.fanapis.com/api/weapons')
@@ -23,6 +25,53 @@ const Compare = () => {
 
   const handleRightWeaponSelect = (weapon) => {
     setSelectedWeaponRight(weapon);
+  };
+
+  const handleCompareClick = () => {
+    if (selectedWeaponLeft && selectedWeaponRight) {
+      // Extract attack and defense values for both weapons
+      const leftAttack = selectedWeaponLeft.attack.reduce((total, attack) => {
+        return {
+          ...total,
+          [attack.name.toLowerCase()]: attack.amount
+        };
+      }, {});
+      const rightAttack = selectedWeaponRight.attack.reduce((total, attack) => {
+        return {
+          ...total,
+          [attack.name.toLowerCase()]: attack.amount
+        };
+      }, {});
+      const leftDefense = selectedWeaponLeft.defence.reduce((total, defense) => {
+        return {
+          ...total,
+          [defense.name.toLowerCase()]: defense.amount
+        };
+      }, {});
+      const rightDefense = selectedWeaponRight.defence.reduce((total, defense) => {
+        return {
+          ...total,
+          [defense.name.toLowerCase()]: defense.amount
+        };
+      }, {});
+  
+      // Calculate the differences for each attack type
+      const attackDiff = {};
+      const defenseDiff = {};
+  
+      Object.keys(leftAttack).forEach(key => {
+        attackDiff[key] = leftAttack[key] - rightAttack[key];
+      });
+  
+      Object.keys(leftDefense).forEach(key => {
+        defenseDiff[key] = leftDefense[key] - rightDefense[key];
+      });
+  
+      setAttackDifference(attackDiff);
+      setDefenseDifference(defenseDiff);
+    } else {
+      console.log('Please select two weapons to compare.');
+    }
   };
 
   return (
@@ -57,6 +106,25 @@ const Compare = () => {
               ))}
             </ul>
           </div>
+        )}
+      </div>
+      <div className="small-column">
+        <button onClick={handleCompareClick}>Compare</button>
+        {Object.keys(attackDifference).length > 0 && (
+          <>
+            <h3>Attack Difference</h3>
+            <ul>
+              {Object.entries(attackDifference).map(([key, value]) => (
+                <li key={key}>{key}: {value}</li>
+              ))}
+            </ul>
+            <h3>Defense Difference</h3>
+            <ul>
+              {Object.entries(defenseDifference).map(([key, value]) => (
+                <li key={key}>{key}: {value}</li>
+              ))}
+            </ul>
+          </>
         )}
       </div>
       <div className="column right-column">
@@ -96,3 +164,4 @@ const Compare = () => {
 };
 
 export default Compare;
+
