@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const DropdownOne = ({ onSelectWeapon }) => {
   const [selectedValue, setSelectedValue] = useState('');
   const [weaponData, setWeaponData] = useState([]);
   const [creatureNames, setCreatureNames] = useState([]);
+  const [bossNames, setBossNames] = useState([]);
 
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
@@ -11,24 +13,24 @@ const DropdownOne = ({ onSelectWeapon }) => {
 
   useEffect(() => {
     if (selectedValue === 'Weapons') {
-      fetch('https://eldenring.fanapis.com/api/weapons')
-        .then((response) => response.json())
-        .then((data) => {
-          setWeaponData(data.data.map((weapon) => ({ id: weapon.id, name: weapon.name })));
+      axios.get('https://eldenring.fanapis.com/api/weapons')
+        .then((response) => {
+          console.log('Weapons Data:', response.data); // Log the weapons data
+          setWeaponData(response.data.data.map((weapon) => ({ id: weapon.id, name: weapon.name })));
         })
         .catch((error) => console.log(error));
     } else if (selectedValue === 'Creatures') {
-      fetch('https://eldenring.fanapis.com/api/creatures')
-        .then((response) => response.json())
-        .then((data) => {
-          setCreatureNames(data.data.map((creature) => creature.name));
+      axios.get('https://eldenring.fanapis.com/api/creatures')
+        .then((response) => {
+          console.log('Creatures Data:', response.data); // Log the creatures data
+          setCreatureNames(response.data.data.map((creature) => creature.name));
         })
         .catch((error) => console.log(error));
     } else if (selectedValue === 'Bosses') {
-      fetch('https://eldenring.fanapis.com/api/bosses')
-        .then((response) => response.json())
-        .then((data) => {
-          setCreatureNames(data.data.map((creature) => creature.name));
+      axios.get('https://eldenring.fanapis.com/api/bosses')
+        .then((response) => {
+          console.log('Bosses Data:', response.data); // Log the bosses data
+          setBossNames(response.data.data.map((boss) => boss.name));
         })
         .catch((error) => console.log(error));
     }
@@ -37,6 +39,7 @@ const DropdownOne = ({ onSelectWeapon }) => {
   const handleWeaponSelect = (event) => {
     const selectedWeaponId = event.target.value;
     const selectedWeapon = weaponData.find(weapon => weapon.id === selectedWeaponId);
+    // Call onSelectWeapon function with selected weapon
     onSelectWeapon(selectedWeapon);
   };
 
@@ -61,20 +64,20 @@ const DropdownOne = ({ onSelectWeapon }) => {
       )}
 
       {selectedValue === 'Creatures' && (
-        <select>
+        <selecton>
           <option value="">Select a creature</option>
           {creatureNames.map((name, index) => (
             <option key={index} value={name}>
               {name}
             </option>
           ))}
-        </select>
+        </selecton>
       )}
 
       {selectedValue === 'Bosses' && (
         <select>
           <option value="">Select a Boss</option>
-          {creatureNames.map((name, index) => (
+          {bossNames.map((name, index) => (
             <option key={index} value={name}>
               {name}
             </option>
@@ -86,7 +89,3 @@ const DropdownOne = ({ onSelectWeapon }) => {
 };
 
 export default DropdownOne;
-
-
-
-

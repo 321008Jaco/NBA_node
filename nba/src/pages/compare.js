@@ -1,39 +1,98 @@
 import React, { useState, useEffect } from 'react';
-import DropdownOne from '../components/Dropdown1';
-import WeaponDisplay from './FetchWeaponById';
-import WeaponDropdown from '../components/Dropdown2';
-import Weapon from '../components/weaponsAPI';
-import DropdownTwo from '../components/Dropdown2';
 import axios from 'axios';
-import './compare.css';
+import './compare.css'; // Import CSS file
 
 const Compare = () => {
-  const [selectedWeaponId, setSelectedWeaponId] = useState('');
+  const [weapons, setWeapons] = useState([]);
+  const [selectedWeaponLeft, setSelectedWeaponLeft] = useState(null);
+  const [selectedWeaponRight, setSelectedWeaponRight] = useState(null);
 
-  const handleSelectWeapon = (weaponId) => {
-    setSelectedWeaponId(weaponId);
+  useEffect(() => {
+    axios.get('https://eldenring.fanapis.com/api/weapons')
+      .then(response => {
+        setWeapons(response.data.data);
+      })
+      .catch(error => {
+        console.error('Error fetching weapons:', error);
+      });
+  }, []);
+
+  const handleLeftWeaponSelect = (weapon) => {
+    setSelectedWeaponLeft(weapon);
+  };
+
+  const handleRightWeaponSelect = (weapon) => {
+    setSelectedWeaponRight(weapon);
   };
 
   return (
     <div className="compare-container">
-      <div className="big-column left-column">
-        Primary
-        <DropdownOne onSelectWeapon={handleSelectWeapon} />
-        {/* DropdownTwo should only be rendered once */}
+      <div className="column left-column">
+        <h2>Left Column</h2>
+        <select onChange={(e) => handleLeftWeaponSelect(JSON.parse(e.target.value))}>
+          <option value="">Select a weapon</option>
+          {weapons.map(weapon => (
+            <option key={weapon.id} value={JSON.stringify(weapon)}>
+              {weapon.name}
+            </option>
+          ))}
+        </select>
+        {selectedWeaponLeft && (
+          <div className="weapon-info">
+            <h2>{selectedWeaponLeft.name}</h2>
+            <img src={selectedWeaponLeft.image} alt={selectedWeaponLeft.name} />
+            <p>Description: {selectedWeaponLeft.description}</p>
+            <p>Category: {selectedWeaponLeft.category}</p>
+            <p>Weight: {selectedWeaponLeft.weight}</p>
+            <h3>Attack</h3>
+            <ul>
+              {selectedWeaponLeft.attack.map((attack, index) => (
+                <li key={index}>{attack.name}: {attack.amount}</li>
+              ))}
+            </ul>
+            <h3>Defence</h3>
+            <ul>
+              {selectedWeaponLeft.defence.map((defence, index) => (
+                <li key={index}>{defence.name}: {defence.amount}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
-      <div className="small-column">
-        {/* Content Here */}
-        Compare
-      </div>
-      <div className="big-column right-column">
-        {/* Content Here */}
-        Secondary
-        {/* Another instance of DropdownOne */}
-        <DropdownTwo selectedWeaponId={selectedWeaponId} />
+      <div className="column right-column">
+        <h2>Right Column</h2>
+        <select onChange={(e) => handleRightWeaponSelect(JSON.parse(e.target.value))}>
+          <option value="">Select a weapon</option>
+          {weapons.map(weapon => (
+            <option key={weapon.id} value={JSON.stringify(weapon)}>
+              {weapon.name}
+            </option>
+          ))}
+        </select>
+        {selectedWeaponRight && (
+          <div className="weapon-info">
+            <h2>{selectedWeaponRight.name}</h2>
+            <img src={selectedWeaponRight.image} alt={selectedWeaponRight.name} />
+            <p>Description: {selectedWeaponRight.description}</p>
+            <p>Category: {selectedWeaponRight.category}</p>
+            <p>Weight: {selectedWeaponRight.weight}</p>
+            <h3>Attack</h3>
+            <ul>
+              {selectedWeaponRight.attack.map((attack, index) => (
+                <li key={index}>{attack.name}: {attack.amount}</li>
+              ))}
+            </ul>
+            <h3>Defence</h3>
+            <ul>
+              {selectedWeaponRight.defence.map((defence, index) => (
+                <li key={index}>{defence.name}: {defence.amount}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 export default Compare;
-

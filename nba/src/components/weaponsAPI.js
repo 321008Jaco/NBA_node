@@ -12,17 +12,18 @@ async function getRandomWeapon() {
   }
 }
 
-function Weapon() {
+function Weapon(data) {
   const [weapon, setWeapon] = useState(null);
 
   useEffect(() => {
     async function fetchWeapon() {
       const weaponData = await getRandomWeapon();
       setWeapon(weaponData);
+      console.log(weaponData)
     }
 
     fetchWeapon();
-  }, []);
+  }, [data]);
 
   if (!weapon) {
     return <div>Loading...</div>;

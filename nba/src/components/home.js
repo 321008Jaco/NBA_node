@@ -8,7 +8,7 @@ const Home = () => {
   const [resetFetch, setResetFetch] = useState(false);
 
   const fetchRandomBoss = () => {
-    setResetFetch(!resetFetch); // Toggle the resetFetch state to trigger a re-fetch
+    setResetFetch(!resetFetch);
   };
 
   return (
@@ -24,7 +24,7 @@ const Home = () => {
           <div className="side-column">
             <div className="content">
               <FetchRandomBoss reset={resetFetch} />
-              <button onClick={fetchRandomBoss}>Fetch Random Boss</button> {/* Button to fetch a random boss */}
+              <button onClick={fetchRandomBoss}>Fetch Random Boss</button>
             </div>
           </div>
         </div>
