@@ -4,8 +4,8 @@ import './footer.css';
 const Footer = () => {
   return (
     <footer className="footer">
-      {/* Your footer content goes here */}
-      This is the footer content.
+      {/* Your footer content here */}
+      <p>&copy; 2024 YourWebsiteName. All rights reserved.</p>
     </footer>
   );
 };

@@ -1,5 +1,5 @@
-import './home.css';
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import HomeChart from './barchart';
 import FetchRandomBoss from './apiCall';
 import PieChart from './piechart';
@@ -14,7 +14,6 @@ const Home = () => {
 
   return (
     <div className='home-container'>
-      <h1>Home Page</h1>
       <div className="container">
         <div className="top-columns">
           <div className="main-column">
@@ -42,21 +41,23 @@ const Home = () => {
       <div className="container">
         <div className="fourth-column">
           <div className="content">
-            <h2>Compare Your weapons</h2>
-            <div class="custom-loader"></div>
+            <Link to="/compare">
+              <h2 className="custom-link">Compare Your weapons In the Compare Page</h2>
+              <div className="custom-loader"></div>
+            </Link>
           </div>
         </div>
-      <div className="fifth-column">
-        <div className="content">
-          <h2>Check Out The Timeline</h2>
-          <div class="custom-loader-time"></div>
+        <div className="fifth-column">
+          <div className="content">
+            <Link to="/timeline">
+              <h2 className="custom-link">Check Out The Timeline Page</h2>
+              <div className="custom-loader-time"></div>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   );
 };
-
-
 
 export default Home;

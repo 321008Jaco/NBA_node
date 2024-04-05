@@ -9,15 +9,12 @@ const HomeChart = () => {
     const [weaponData, setWeaponData] = useState([]);
 
     useEffect(() => {
-        // Fetch weapon data from the API
         axios.get('https://eldenring.fanapis.com/api/weapons')
             .then(response => {
                 const data = response.data.data;
-                // Extracting weapon names and damage amounts
                 const labels = data.map(weapon => weapon.name);
                 const damage = data.map(weapon => weapon.attack.find(a => a.name === 'Phy').amount);
 
-                // Updating state with formatted data
                 setWeaponData({ labels, damage });
             })
             .catch(error => {
@@ -26,7 +23,7 @@ const HomeChart = () => {
     }, []);
 
     return (
-        <div className="chart-container"> {/* Add a class to the container */}
+        <div className="chart-container">
             <h2>Weapons Damage Chart</h2>
             <Bar
                 data={{
@@ -35,16 +32,17 @@ const HomeChart = () => {
                         {
                             label: 'Damage',
                             data: weaponData.damage,
-                            backgroundColor: 'Red',
+                            backgroundColor: '#368668',
+                            borderColor: '#368668',
                             borderColor: 'black',
                             borderWidth: 1,
                         }
                     ]
                 }}
-                height={null} // Set height to null to enable responsive resizing
-                width={'100%'} // Set width to 100% to fill the container
+                height={null}
+                width={'100%'}
                 options={{
-                    maintainAspectRatio: false, // Disable aspect ratio to fill the container
+                    maintainAspectRatio: false,
                     scales: {
                         y: {
                             beginAtZero: true

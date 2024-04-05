@@ -11,7 +11,6 @@ const Timeline = () => {
 
   return (
     <div>
-      <h1 style={{textAlign: 'center'}}>Timeline Page</h1>
       <div className="timeline-graph-container">
         <div className="timeline-main-column">
           <div className="content">

@@ -1,6 +1,8 @@
 .compare-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin: 50px;
 }
 
 .column {
@@ -23,39 +25,43 @@
 }
 
 .left-column {
-  background-color: #1B263B;
+  background-color: #202123;
   width: 40%;
   margin-left: 50px;
 }
 
 .right-column {
-  background-color: #1B263B;
+  background-color: #202123;
   width: 40%;
   margin-right: 50px;
 }
 
-.small-column{
-  background-color: #0D1B2A;
+.small-column {
+  background-color: #202123;
   width: 20%;
-  height: 400px;
+  height: fit-content;
   margin: 10px;
-  margin-top: 200px;
   border-radius: 50px;
   text-align: center;
 }
 
-.small-column button{
+.small-column button {
   width: 100px;
   height: 25px;
   display: flex;
   margin: 10px;
-  margin-left: 60px;
+  margin-left: 100px;
   text-align: center;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: #368668;
+  color: white;
   border-color: transparent;
   border-radius: 50px;
+}
+
+.small-column button:hover {
+  background-color: white;
 }
 
 .dropdown-one select,

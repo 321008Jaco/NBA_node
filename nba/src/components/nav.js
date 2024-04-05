@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { HiHome } from "react-icons/hi";
+import { HiScale } from "react-icons/hi2";
+import { HiClock } from "react-icons/hi2";
 import './nav.css';
 
 const Navigation = () => {
@@ -8,34 +11,23 @@ const Navigation = () => {
       <ul className="nav-list">
         <li>
           <Link to="/" className="nav-link">
+          <HiHome />
             Home
           </Link>
         </li>
         <li>
           <Link to="/compare" className="nav-link">
+            <HiScale />
             Compare
           </Link>
         </li>
         <li>
           <Link to="/timeline" className="nav-link">
+            <HiClock />
             Timeline
           </Link>
         </li>
       </ul>
-
-      <div className="svg-icons">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          {/* Add your SVG code for the first icon here */}
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          {/* Add your SVG code for the second icon here */}
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          {/* Add your SVG code for the third icon here */}
-        </svg>
-      </div>
-
-
     </nav>
   );
 };

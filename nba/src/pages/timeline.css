@@ -1,13 +1,15 @@
 .timeline-graph-container {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .timeline-main-column {
-    width: 70%;
-    padding: 10px;
-    border-radius: 50px;
-    background-color: #0D1B2A;
-    margin: 10px;
-    margin-left: 50px;
-  }
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Set height to full viewport height */
+}
+
+.timeline-main-column {
+  width: 70%;
+  padding: 10px;
+  border-radius: 50px;
+  background-color: #202123;
+  margin: 10px;
+  margin-left: 50px;
+}

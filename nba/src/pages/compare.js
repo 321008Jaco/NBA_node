@@ -29,7 +29,7 @@ const Compare = () => {
 
   const handleCompareClick = () => {
     if (selectedWeaponLeft && selectedWeaponRight) {
-      // Extract attack and defense values for both weapons
+      
       const leftAttack = selectedWeaponLeft.attack.reduce((total, attack) => {
         return {
           ...total,
@@ -55,7 +55,6 @@ const Compare = () => {
         };
       }, {});
   
-      // Calculate the differences for each attack type
       const attackDiff = {};
       const defenseDiff = {};
   
