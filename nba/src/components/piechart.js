@@ -55,6 +55,7 @@ const PieChart = () => {
       <Pie data={data} />
     </div>
   );
+
 };
 
 export default PieChart;

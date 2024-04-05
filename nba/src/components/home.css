@@ -1,5 +1,13 @@
 .home {
-  background-color: #26292E;
+  background-color: #3D5470;
+}
+
+.home-container {
+  margin-left: 40px;
+}
+
+h1 {
+  text-align: center;
 }
 
 .container {
@@ -16,21 +24,23 @@
 
 .main-column {
   flex: 2;
-  background-color: #1a1c1f;
+  background-color: #25334A;
   padding: 20px;
-  min-height: 30vh;
+  min-height: 65vh;
   margin-right: 20px;
   border-radius: 50px;
   max-width: 70%;
+  box-shadow: 21px 24px 11px 8px rgba(0,0,0,0.1);
 }
 
 .side-column {
   width: 30%;
   padding: 10px;
   border-radius: 50px;
-  background-color: #141518;
+  background-color: #0D1B2A;
   align-items: center;
   text-align: center;
+  box-shadow: 21px 24px 11px 8px rgba(0,0,0,0.1);
 }
 
 .side-column .content {
@@ -41,6 +51,7 @@
 
 .side-column button {
   margin-top: 10px;
+  margin-right: 50px;
   padding: 8px 16px;
   background-color: #007bff;
   color: #fff;
@@ -54,18 +65,21 @@
 }
 
 .third-column {
-  flex: 3;
-  background-color: #1a1c1f;
+  background-color: #202D43;
   padding: 20px;
   min-height: 35vh;
   margin-top: 20px;
   border-radius: 50px;
+  width: 100%;
+  box-shadow: 21px 24px 11px 8px rgba(0,0,0,0.1);
 }
 
 @media (max-width: 768px) {
   .main-column,
   .side-column,
-  .third-column {
+  .third-column,
+  .fourth-column,
+  .fifth-column {
     flex: 100%;
     margin: 0;
   }
@@ -73,8 +87,9 @@
 
 .content {
   margin: 0;
+  margin-right: ;
   padding-bottom: 30px;
-  height: 70vh;
+  height: 30vh;
   max-width: 100%;
   margin-left: -50px;
 }
@@ -116,4 +131,101 @@
   height: 100%;
   max-width: 100%;
   margin-top: -5px;
+}
+
+.pie-chart-container {
+  height: 300px;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.fourth-column,
+.fifth-column {
+  background-color: #0D1B2A; /* Set the background color */
+  padding: 20px;
+  min-height: 35vh;
+  margin-top: 20px;
+  margin-left: 90px;
+  max-width: 40%;
+  border-radius: 50px;
+  width: calc(50% - 10px); /* Adjust the width */
+  box-shadow: 21px 24px 11px 8px rgba(0,0,0,0.1);
+}
+
+.fifth-column{
+  margin-left: 50px;
+}
+
+.custom-loader {
+  width:80px;
+  height:60px;
+  display:grid;
+  margin-left: 200px;
+  margin-top: 90px;
+}
+.custom-loader:before,
+.custom-loader:after {
+  content: "";
+  grid-area: 1/1;
+  background: #3D5470;
+  clip-path: polygon(0 20px,calc(100% - 30px) 20px,calc(100% - 30px) 0,100% 50%,calc(100% - 30px) 100%,calc(100% - 30px) calc(100% - 20px),0 calc(100% - 20px));
+  animation: a4 .5s infinite alternate;
+}
+
+.custom-loader:after {
+  --s:-1;
+}
+@keyframes a4 {
+  0%  {transform: scale(var(--s,1)) translate(24px,-12px) translate(8px)}
+  100%{transform: scale(var(--s,1)) translate(24px,-12px) translate(-8px)}
+}
+
+.content h2{
+  text-align: center;
+  margin-right: 90px;
+}
+
+.custom-loader-time {
+  width:160px;
+  height:80px;
+  margin-left: 150px;
+  margin-top: 90px;
+  color: #3D5470;
+  --c:linear-gradient(currentColor 0 0);
+  background:
+    var(--c),
+    var(--c),
+    var(--c),
+    var(--c),
+    var(--c),
+    var(--c),
+    var(--c);
+  background-repeat: no-repeat;
+  animation: 
+    l4-1 1.5s infinite,
+    l4-2 1.5s infinite;
+  
+}
+
+@keyframes l4-1 {
+  0%      {background-size: 0   8px,8px 0  ,0   8px,8px 0   ,0   8px,8px 0  ,0   8px}
+  7.14%   {background-size: 25% 8px,8px 0  ,0   8px,8px 0   ,0   8px,8px 0  ,0   8px}
+  14.29%  {background-size: 25% 8px,8px 50%,0   8px,8px 0   ,0   8px,8px 0  ,0   8px}
+  21.43%  {background-size: 25% 8px,8px 50%,25% 8px,8px 0   ,0   8px,8px 0  ,0   8px}
+  28.57%  {background-size: 25% 8px,8px 50%,25% 8px,8px 100%,0   8px,8px 0  ,0   8px}
+  35.71%  {background-size: 25% 8px,8px 50%,25% 8px,8px 100%,25% 8px,8px 0  ,0   8px}
+  42.86%  {background-size: 25% 8px,8px 50%,25% 8px,8px 100%,25% 8px,8px 50%,0   8px}
+  49%,
+  51%     {background-size: 25% 8px,8px 50%,25% 8px,8px 100%,25% 8px,8px 50%,25% 8px}
+  57.14%  {background-size: 0   8px,8px 50%,25% 8px,8px 100%,25% 8px,8px 50%,25% 8px}
+  64.29%  {background-size: 0   8px,8px 0  ,25% 8px,8px 100%,25% 8px,8px 50%,25% 8px}
+  71.43%  {background-size: 0   8px,8px 0  ,0   8px,8px 100%,25% 8px,8px 50%,25% 8px}
+  78.57%  {background-size: 0   8px,8px 0  ,0   8px,8px 0   ,25% 8px,8px 50%,25% 8px}
+  85.71%  {background-size: 0   8px,8px 0  ,0   8px,8px 0   ,0   8px,8px 50%,25% 8px}
+  92.86%  {background-size: 0   8px,8px 0  ,0   8px,8px 0   ,0   8px,8px 0  ,25% 8px}
+  100%    {background-size: 0   8px,8px 0  ,0   8px,8px 0   ,0   8px,8px 0  ,0   8px}
+}
+@keyframes l4-2 {
+  0%,49.9% {background-position:0 50%,bottom 40px left 32px,40px 0,50% 0,80px 100%,bottom 0 right 32px,120px 50% }
+  50%,100% {background-position:right 120px top 50%,32px 0,right 80px top 0,50% 100%,right 40px bottom 0,right 32px top 40px,100% 50%}
 }

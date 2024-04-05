@@ -78,6 +78,7 @@ const Compare = () => {
     <div className="compare-container">
       <div className="column left-column">
         <h2>Left Column</h2>
+        <div className='dropdown-one'>
         <select onChange={(e) => handleLeftWeaponSelect(JSON.parse(e.target.value))}>
           <option value="">Select a weapon</option>
           {weapons.map(weapon => (
@@ -86,6 +87,7 @@ const Compare = () => {
             </option>
           ))}
         </select>
+        </div>
         {selectedWeaponLeft && (
           <div className="weapon-info">
             <h2>{selectedWeaponLeft.name}</h2>
@@ -129,6 +131,7 @@ const Compare = () => {
       </div>
       <div className="column right-column">
         <h2>Right Column</h2>
+        <div className='dropdown-one'>
         <select onChange={(e) => handleRightWeaponSelect(JSON.parse(e.target.value))}>
           <option value="">Select a weapon</option>
           {weapons.map(weapon => (
@@ -137,6 +140,7 @@ const Compare = () => {
             </option>
           ))}
         </select>
+        </div>
         {selectedWeaponRight && (
           <div className="weapon-info">
             <h2>{selectedWeaponRight.name}</h2>
