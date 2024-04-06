@@ -2,7 +2,10 @@
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-color: #161719;
+  background-image: url('../src/components/assets/Elden\ Ring.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 .content {
