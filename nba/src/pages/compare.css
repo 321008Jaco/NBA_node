@@ -1,12 +1,25 @@
 .compare-container {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  flex-direction: column;
+  align-items: center;
   margin: 50px;
 }
 
+.top-columns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.bottom-columns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .column {
-  width: 45%;
+  width: 30%;
   padding: 10px;
   border-radius: 50px;
 }
@@ -22,46 +35,6 @@
 .weapon-info ul {
   list-style: none;
   padding: 0;
-}
-
-.left-column {
-  background-color: #202123;
-  width: 40%;
-  margin-left: 50px;
-}
-
-.right-column {
-  background-color: #202123;
-  width: 40%;
-  margin-right: 50px;
-}
-
-.small-column {
-  background-color: #202123;
-  width: 20%;
-  height: fit-content;
-  margin: 10px;
-  border-radius: 50px;
-  text-align: center;
-}
-
-.small-column button {
-  width: 100px;
-  height: 25px;
-  display: flex;
-  margin: 10px;
-  margin-left: 100px;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  background-color: #368668;
-  color: white;
-  border-color: transparent;
-  border-radius: 50px;
-}
-
-.small-column button:hover {
-  background-color: white;
 }
 
 .dropdown-one select,
@@ -95,4 +68,72 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+.charts-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.left-column {
+  background-color: #202123;
+  box-shadow: 6px 6px 8px 2px rgba(0, 0, 0, 0.48);
+}
+
+.right-column {
+  background-color: #202123;
+  box-shadow: 6px 6px 8px 2px rgba(0, 0, 0, 0.48);
+}
+
+.small-column {
+  background-color: #202123;
+  height: fit-content;
+  margin: 10px;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 6px 6px 8px 2px rgba(0, 0, 0, 0.48);
+}
+
+.small-column button {
+  width: 100px;
+  height: 25px;
+  display: flex;
+  margin: 10px auto; /* Center the button horizontally */
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #368668;
+  color: white;
+  border-color: transparent;
+  border-radius: 50px;
+}
+
+.small-column button:hover {
+  background-color: white;
+}
+
+.pie-chart {
+  background-color: #245a46;
+  width: 48%;
+  padding: 10px;
+  border-radius: 50px;
+  box-shadow: 6px 6px 8px 2px rgba(0, 0, 0, 0.48);
+}
+
+.radar-chart {
+  background-color: #245a46;
+  width: 48%;
+  padding: 10px;
+  border-radius: 50px;
+  box-shadow: 6px 6px 8px 2px rgba(0, 0, 0, 0.48);
+}
+
+.bar-chart {
+  background-color: #202123;
+  width: 100%;
+  padding: 10px;
+  border-radius: 50px;
+  margin-top: 10px;
+  box-shadow: 6px 6px 8px 2px rgba(0, 0, 0, 0.48);
 }
