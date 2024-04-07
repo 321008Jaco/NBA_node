@@ -14,6 +14,7 @@ const Timeline = () => {
       <div className="timeline-graph-container">
         <div className="timeline-main-column">
           <div className="content">
+            <h2>Elden Ring Release dates</h2>
             <LineChart />
           </div>
         </div>

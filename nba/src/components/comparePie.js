@@ -15,7 +15,6 @@ const ComparePie = ({ attackDifference }) => {
             'red',
             'blue',
             'green',
-            // Add more colors as needed
           ],
         },
       ],
