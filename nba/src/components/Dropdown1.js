@@ -15,21 +15,21 @@ const DropdownOne = ({ onSelectWeapon }) => {
     if (selectedValue === 'Weapons') {
       axios.get('https://eldenring.fanapis.com/api/weapons')
         .then((response) => {
-          console.log('Weapons Data:', response.data); // Log the weapons data
+          console.log('Weapons Data:', response.data);
           setWeaponData(response.data.data.map((weapon) => ({ id: weapon.id, name: weapon.name })));
         })
         .catch((error) => console.log(error));
     } else if (selectedValue === 'Creatures') {
       axios.get('https://eldenring.fanapis.com/api/creatures')
         .then((response) => {
-          console.log('Creatures Data:', response.data); // Log the creatures data
+          console.log('Creatures Data:', response.data);
           setCreatureNames(response.data.data.map((creature) => creature.name));
         })
         .catch((error) => console.log(error));
     } else if (selectedValue === 'Bosses') {
       axios.get('https://eldenring.fanapis.com/api/bosses')
         .then((response) => {
-          console.log('Bosses Data:', response.data); // Log the bosses data
+          console.log('Bosses Data:', response.data);
           setBossNames(response.data.data.map((boss) => boss.name));
         })
         .catch((error) => console.log(error));
@@ -39,7 +39,6 @@ const DropdownOne = ({ onSelectWeapon }) => {
   const handleWeaponSelect = (event) => {
     const selectedWeaponId = event.target.value;
     const selectedWeapon = weaponData.find(weapon => weapon.id === selectedWeaponId);
-    // Call onSelectWeapon function with selected weapon
     onSelectWeapon(selectedWeapon);
   };
 

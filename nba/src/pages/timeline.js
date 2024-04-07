@@ -6,7 +6,7 @@ const Timeline = () => {
   const [weaponsByCategory, setWeaponsByCategory] = useState([]);
 
   useEffect(() => {
-    // No weapon-related code in this useEffect
+
   }, []);
 
   return (
@@ -14,7 +14,7 @@ const Timeline = () => {
       <div className="timeline-graph-container">
         <div className="timeline-main-column">
           <div className="content">
-            {/* <LineChart /> */}
+            <LineChart />
           </div>
         </div>
       </div>

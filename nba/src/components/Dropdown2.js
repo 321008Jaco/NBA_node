@@ -71,7 +71,6 @@ const DropdownTwo = ({ selectedOption }) => {
         ))}
       </select>
 
-      {/* Display data based on selected option */}
       {selectedOption === 'Weapons' && (
         <div>
           {weaponData && (
@@ -104,13 +103,13 @@ const DropdownTwo = ({ selectedOption }) => {
 
       {selectedOption === 'Creatures' && (
         <div>
-          {/* Display creature data here */}
+          
         </div>
       )}
 
       {selectedOption === 'Bosses' && (
         <div>
-          {/* Display boss data here */}
+          
         </div>
       )}
     </div>

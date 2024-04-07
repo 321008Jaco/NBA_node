@@ -8,6 +8,7 @@ import './nav.css';
 const Navigation = () => {
   return (
     <nav className="nav">
+      <div className='Logo'></div>
       <ul className="nav-list">
         <li>
           <Link to="/" className="nav-link">

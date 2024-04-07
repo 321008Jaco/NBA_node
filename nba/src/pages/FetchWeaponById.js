@@ -5,7 +5,7 @@ async function getWeaponById(weaponId) {
     try {
       const response = await axios.get(`https://eldenring.fanapis.com/api/weapons/${weaponId}`);
       const weaponData = response.data.data[0];
-      console.log('Weapon Data:', weaponData); // Log the weapon data
+      console.log('Weapon Data:', weaponData);
       return weaponData;
     } catch (error) {
       console.error('Error fetching weapon data by ID:', error);

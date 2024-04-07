@@ -68,6 +68,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  color: white;
 }
 
 .charts-container {
@@ -88,6 +89,7 @@
 
 .small-column {
   background-color: #202123;
+  color: white;
   height: fit-content;
   margin: 10px;
   border-radius: 50px;
@@ -99,7 +101,7 @@
   width: 100px;
   height: 25px;
   display: flex;
-  margin: 10px auto; /* Center the button horizontally */
+  margin: 10px auto;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -119,6 +121,8 @@
   padding: 10px;
   border-radius: 50px;
   box-shadow: 6px 6px 8px 2px rgba(0, 0, 0, 0.48);
+  text-align: center;
+  color: white;
 }
 
 .radar-chart {
@@ -127,6 +131,8 @@
   padding: 10px;
   border-radius: 50px;
   box-shadow: 6px 6px 8px 2px rgba(0, 0, 0, 0.48);
+  text-align: center;
+  color: white;
 }
 
 .bar-chart {
@@ -136,4 +142,6 @@
   border-radius: 50px;
   margin-top: 10px;
   box-shadow: 6px 6px 8px 2px rgba(0, 0, 0, 0.48);
+  text-align: center;
+  color: white;
 }

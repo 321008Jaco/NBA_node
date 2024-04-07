@@ -80,7 +80,6 @@ const Compare = () => {
     <div className="compare-container">
       <div className="top-columns">
         <div className="column left-column">
-          <h2>Left Column</h2>
           <div className='dropdown-one'>
             <select onChange={(e) => handleLeftWeaponSelect(JSON.parse(e.target.value))}>
               <option value="">Select a weapon</option>
@@ -132,7 +131,6 @@ const Compare = () => {
         )}
       </div>
         <div className="column right-column">
-          <h2>Right Column</h2>
           <div className='dropdown-one'>
             <select onChange={(e) => handleRightWeaponSelect(JSON.parse(e.target.value))}>
               <option value="">Select a weapon</option>

@@ -17,7 +17,7 @@ const FetchRandomBoss = ({ reset }) => {
     };
 
     fetchRandomBoss();
-  }, [reset]); // Trigger fetch when reset prop changes
+  }, [reset]);
 
   return (
     
